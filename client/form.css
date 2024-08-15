@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.form-container {
+  width: 24rem;
+  margin: 0 auto;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.input-container > label {
+  color: var(--text-col);
+}
+
+.input-container > input {
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  padding: 0.8em 1.2em;
+}
+
+.input-container > input:focus {
+  border-color: var(--action-col);
+  outline: none;
+}
+
+.action-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.action-btn {
+  background-color: var(--action-col);
+  color: var(--white-col);
+  border-radius: 4px;
+  border: 1px solid var(--action-col);
+  width: 100%;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.action-container > a {
+  font-size: 14px;
+  color: var(--action-col);
+  text-decoration: none;
+  text-align: center;
+}

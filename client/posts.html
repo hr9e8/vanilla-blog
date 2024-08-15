@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="posts.css" />
+    <title>Posts</title>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Posts</h1>
+      <button class="create-btn" onclick="location.href='/posts/new'">
+        New Post
+      </button>
+    </div>
+    <div id="user-posts">
+      <h2>Your Posts</h2>
+      <div class="posts-container"></div>
+    </div>
+    <div id="public-posts">
+      <h2>Public Posts</h2>
+      <div class="posts-container"></div>
+    </div>
+
+    <script>
+      async function getPostsData() {
+        const userPostsContainer = document.querySelector(
+          '#user-posts .posts-container'
+        );
+        const publicPostsContainer = document.querySelector(
+          '#public-posts .posts-container'
+        );
+
+        try {
+          const response = await fetch('/posts/data', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to fetch posts');
+          }
+
+          const data = await response.json();
+
+          function renderPosts(posts, container) {
+            if (posts.length === 0) {
+              container.innerHTML = '<p>No posts to display</p>';
+            } else {
+              container.innerHTML = posts
+                .map(
+                  (post) => `
+                    <div class="post">
+                      <h3>${post.title}</h3>
+                      <p>${post.content}</p>
+                    </div>
+                  `
+                )
+                .join('');
+            }
+          }
+
+          renderPosts(data.userPosts, userPostsContainer);
+          renderPosts(data.publicPosts, publicPostsContainer);
+        } catch (error) {
+          console.error('Error:', error);
+          document.getElementById('posts').innerHTML =
+            '<p>Error loading posts. Please try again later.</p>';
+        }
+      }
+      getPostsData();
+    </script>
+  </body>
+</html>

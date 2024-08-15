@@ -1,0 +1,68 @@
+body {
+  min-height: 100vh;
+  width: 1100px;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+.save-btn {
+  background-color: var(--action-col);
+  color: var(--white-col);
+  border-radius: 4px;
+  border: 1px solid var(--action-col);
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  max-height: 40px;
+  padding: 0.5em 1.5em;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.input-container > label {
+  color: var(--text-col);
+}
+
+.input-container > input {
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  padding: 0.8em 1.2em;
+}
+
+.input-container > textarea {
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  padding: 0.8em 1.2em;
+}
+
+.input-container > input:focus {
+  border-color: var(--action-col);
+  outline: none;
+}
+
+.form-container {
+  width: 32rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.add-heading {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: end;
+  align-items: center;
+}
